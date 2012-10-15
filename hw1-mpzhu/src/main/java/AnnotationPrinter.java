@@ -18,7 +18,6 @@
  */
 
 import java.io.File;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
@@ -102,7 +101,7 @@ public class AnnotationPrinter extends CasConsumer_ImplBase implements CasObject
    * @throws ResourceProcessException
    *           if there is an error in processing the Resource
    * 
-   * @see org.apache.uima.collection.base_cpm.CasObjectProcessor#processCas(CAS)
+   * @see org.apache.uima.collection.base_cpm.CasObjectProcessor#processCas1(CAS)
    */
   @Override
   public synchronized void processCas(CAS aCAS) throws ResourceProcessException {
