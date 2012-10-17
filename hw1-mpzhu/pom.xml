@@ -106,8 +106,7 @@
     </dependency>
   </dependencies>
   <scm>
-  	<connection>git:git@github.com:phyllis0618/hw1-mpzhu.git</connection>
-  	<developerConnection>git:git@github.com:phyllis0618/hw1-mpzhu.git</developerConnection>
-  	<url>git:git@github.com:phyllis0618/hw1-mpzhu.git</url>
+  	<connection>scm:git:git://github.com:phyllis0618/hw1-mpzhu.git</connection>
+  	<developerConnection>scm:git:git://github.com:phyllis0618/hw1-mpzhu.git</developerConnection>
   </scm>
 </project>
