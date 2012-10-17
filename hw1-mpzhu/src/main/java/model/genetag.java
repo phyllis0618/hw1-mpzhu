@@ -3,7 +3,7 @@
 /* First created by JCasGen Sat Oct 13 11:32:10 EDT 2012 */
 package model;
 
-import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Mon Oct 15 18:09:29 EDT 2012
- * XML source: /Users/phyllis/git/hw1-mpzhu/hw1-mpzhu/src/main/resources/CPE/genetypeSystemDescriptor.xml
+ * Updated by JCasGen Sun Oct 14 16:05:26 EDT 2012
+ * XML source: /Users/phyllis/Documents/workspace/hw1-mpzhu/src/main/resources/CPE/genetypeSystemDescriptor.xml
  * @generated */
 public class genetag extends Annotation {
   /** @generated

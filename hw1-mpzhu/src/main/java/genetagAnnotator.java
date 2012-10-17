@@ -17,23 +17,25 @@
  * under the License.
  */
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
+import java.util.*;
 
 import model.genetag;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
-
-import com.aliasi.chunk.Chunk;
-import com.aliasi.chunk.ConfidenceChunker;
-import com.aliasi.util.AbstractExternalizable;
+import org.apache.uima.resource.ResourceInitializationException;
 
 /**
  * Example annotator that detects room numbers using Java 1.4 regular expressions.
  */
-
+/**
+ * 
+ * @author phyllis
+ * @version 1.0
+ * @see the genetagAnnotation contains the process od import the text, use string.to cut the sentence into two part: ID and words. call the PosTagNamedEntityRecognizer to analyse the text. after analysing the location of selected words, the begin will be stored in key, the end will be stored in value, and we can pick the word out according to the being and end.
+ * @see use the annotion. to set the id, location and words. 
+ *
+ */
 public class genetagAnnotator extends JCasAnnotator_ImplBase {
 
   private genetag annotation;
@@ -51,49 +53,37 @@ public class genetagAnnotator extends JCasAnnotator_ImplBase {
     String[] strarray = str.split("\n");
     Object genetag;
     for (int i = 0; i < strarray.length; i++) {
+      
 
       String s = strarray[i].substring(15);
       String id = strarray[i].substring(0, 14);
 
-      File modelFile = new File("src/ne-en-bio-genetag.hmmchunker");
-
-      // System.out.println("Reading chunker from file=" + modelFile);
-
-      ConfidenceChunker chunker = null;
-
+      Map map = new HashMap();
       try {
-        chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (ClassNotFoundException e) {
-        // TODO Auto-generated catch block
+        PosTagNamedEntityRecognizer postag = new PosTagNamedEntityRecognizer();
+        map = postag.getGeneSpans(s);
+      } catch (ResourceInitializationException e) {
+
         e.printStackTrace();
       }
-      for (int j = 0; j < s.length(); ++i) {
-        char[] cs = s.toCharArray();
-        Iterator<Chunk> it = chunker.nBestChunks(cs, 0, cs.length, 8);
-        // System.out.println(args[i]);
-        for (int n = 0; it.hasNext(); ++n) {
-          Chunk so = it.next();
-          // double jointProb = so.score();
-          Chunk chunk = it.next();
-          double conf = Math.pow(2.0,chunk.score());
-          int start = chunk.start();
-          int end = chunk.end();
-          String words = s.substring(start,end);
-
-          // System.out.println(n + " " + " " + chunking.chunkSet());
-
+      Set keys = map.keySet();
+      if (keys != null) {
+        Iterator iterator = keys.iterator();
+        while (iterator.hasNext()) {
+          int key = (Integer) iterator.next();
+          int value = (Integer) map.get(key);
+          String words = s.substring(key, value);
+          
           genetag annotation = new genetag(aJCas);
           annotation.setId(id);
-          annotation.setBegin(chunk.start());
-          annotation.setEnd(chunk.end());
+          annotation.setBegin(key);
+          annotation.setEnd(value);
           annotation.setWords(words);
           annotation.addToIndexes();
-
+                
         }
       }
+     
 
     }
     // System.out.println("!!!");

@@ -9,7 +9,7 @@
                 <nameValuePair>
                     <name>InputDirectory</name>
                     <value>
-                        <string>/Users/phyllis/Documents/workspace/hw1-mpzhu/src/main/resources/data</string>
+                        <string>/Users/phyllis/git/hw1-mpzhu/hw1-mpzhu/src/main/resources/data</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>

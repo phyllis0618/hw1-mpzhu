@@ -18,6 +18,7 @@
  */
 
 import java.io.File;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
@@ -101,7 +102,7 @@ public class AnnotationPrinter extends CasConsumer_ImplBase implements CasObject
    * @throws ResourceProcessException
    *           if there is an error in processing the Resource
    * 
-   * @see org.apache.uima.collection.base_cpm.CasObjectProcessor#processCas1(CAS)
+   * @see org.apache.uima.collection.base_cpm.CasObjectProcessor#processCas(CAS)
    */
   @Override
   public synchronized void processCas(CAS aCAS) throws ResourceProcessException {
@@ -120,11 +121,9 @@ public class AnnotationPrinter extends CasConsumer_ImplBase implements CasObject
       docUri = srcDocInfo.getUri();
     }
 
-    // iterate and print annotations
+    
     Iterator annotationIter = jcas.getIndexRepository().getIndex("genetag").iterator();
-    //System.out.println("!!!");
-    while (annotationIter.hasNext()) {
-      System.out.println("!!!");
+    while (annotationIter.hasNext()) {    
       genetag annot = (genetag) annotationIter.next();
       if (titleP == false) {
 
@@ -139,11 +138,11 @@ public class AnnotationPrinter extends CasConsumer_ImplBase implements CasObject
         titleP = true;
       }
 
-      // get the text that is enclosed within the annotation in the CAS
+     
       String aText = annot.getCoveredText();
       aText = aText.replace('\n', ' ');
       aText = aText.replace('\r', ' ');
-      // System.out.println( annot.getType().getName() + " "+aText);
+      
       try {
         fileWriter.write(annot.getId() + " " +"|"+annot.getBegin()+" "+annot.getEnd()+"|"+annot.getWords()+aText + "\n");
         fileWriter.flush();

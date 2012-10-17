@@ -13,7 +13,14 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
-
+/**
+ * 
+ * @author phyllis
+ * @version PosTagNamedEntityRecognizer is a call from PosTagNamedEntityRecognizer.java.
+ * @see use the "annotators", " tokenize, ssplit, pos" to find out the nameEntity. construct the data type as map 
+ * @param Properties is a method that connect the key and value in the map data structure.
+ *
+ */
 public class PosTagNamedEntityRecognizer {
 
   private StanfordCoreNLP pipeline;
