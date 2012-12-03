@@ -9,7 +9,7 @@
                 <nameValuePair>
                     <name>InputDirectory</name>
                     <value>
-                        <string>/Users/phyllis/git/hw1-mpzhu/hw1-mpzhu</string>
+                        <string>hw1.in</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>

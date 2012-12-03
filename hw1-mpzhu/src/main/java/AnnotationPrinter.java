@@ -125,19 +125,7 @@ public class AnnotationPrinter extends CasConsumer_ImplBase implements CasObject
     Iterator annotationIter = jcas.getIndexRepository().getIndex("genetag").iterator();
     while (annotationIter.hasNext()) {    
       genetag annot = (genetag) annotationIter.next();
-      if (titleP == false) {
-
-        try {
-          fileWriter.write("\n\n<++++NEW DOCUMENT++++>\n");
-          if (docUri != null)
-            fileWriter.write("DOCUMENT URI:" + docUri + "\n");
-          fileWriter.write("\n");
-        } catch (IOException e) {
-          throw new ResourceProcessException(e);
-        }
-        titleP = true;
-      }
-
+      
      
       String aText = annot.getCoveredText();
       aText = aText.replace('\n', ' ');
